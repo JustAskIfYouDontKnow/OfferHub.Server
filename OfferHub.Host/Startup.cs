@@ -1,4 +1,8 @@
-﻿namespace OfferHub.Host;
+﻿using Microsoft.EntityFrameworkCore;
+using Offerhub.Database;
+using OfferHub.Host.Services;
+
+namespace OfferHub.Host;
 public class Startup
 {
     public IConfiguration Configuration { get; }
@@ -33,11 +37,23 @@ public class Startup
 
         SwaggerStartup.ConfigureServices(services);
         RegisterDatabaseServices(services);
-
     }
 
 
-    private void RegisterDatabaseServices(IServiceCollection services) { }
+    private void RegisterDatabaseServices(IServiceCollection services)
+    {
+        services.AddScoped<IDatabaseContainer, DatabaseContainer>();
+        services.AddScoped<IServiceFactory, ServiceFactory>();
+        
+        var typeOfContent = typeof(Startup);
+            
+        services.AddDbContext<PostgresContext>(
+            options => options.UseNpgsql(
+                Configuration.GetConnectionString("PostgresConnection"),
+                b => b.MigrationsAssembly(typeOfContent.Assembly.GetName().Name)
+            )
+        );
+    }
 
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
