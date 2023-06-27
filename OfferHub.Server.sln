@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfferHub.Host", "OfferHub.Host\OfferHub.Host.csproj", "{3B4E7FBC-683A-421E-B8B0-1B95AD791B38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offerhub.Database", "Offerhub.Database\Offerhub.Database.csproj", "{435D10E5-F90C-4912-A444-33D2F9C66690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfferHub.API.Models", "OfferHub.API.Models\OfferHub.API.Models.csproj", "{7BFC2ACA-28B6-4CBA-9A38-6D7A50372FAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{3B4E7FBC-683A-421E-B8B0-1B95AD791B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B4E7FBC-683A-421E-B8B0-1B95AD791B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B4E7FBC-683A-421E-B8B0-1B95AD791B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435D10E5-F90C-4912-A444-33D2F9C66690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435D10E5-F90C-4912-A444-33D2F9C66690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435D10E5-F90C-4912-A444-33D2F9C66690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435D10E5-F90C-4912-A444-33D2F9C66690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFC2ACA-28B6-4CBA-9A38-6D7A50372FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFC2ACA-28B6-4CBA-9A38-6D7A50372FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFC2ACA-28B6-4CBA-9A38-6D7A50372FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFC2ACA-28B6-4CBA-9A38-6D7A50372FAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
