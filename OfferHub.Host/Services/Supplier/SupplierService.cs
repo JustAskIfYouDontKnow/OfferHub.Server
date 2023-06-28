@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Offerhub.Database;
-using Offerhub.Database.Offer;
+﻿using Offerhub.Database;
 using Offerhub.Database.Supplier;
 
 namespace OfferHub.Host.Services.Supplier;
@@ -23,7 +21,6 @@ public class SupplierService : ISupplierService
 
     public async Task<List<SupplierModel>> SupplierList(int skip, int take)
     {
-   
         return await _databaseContainer.Supplier.SupplierList(skip, take);
     }
 }
