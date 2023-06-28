@@ -4,15 +4,30 @@ using Microsoft.OpenApi.Models;
 
 static internal class SwaggerStartup
 {
+    private const string Prefix = "OfferHub.";
     public static void ConfigureServices(IServiceCollection services)
     {
         services.AddSwaggerGen(
             c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Main Api", Version = "v1"});
-                c.SwaggerDoc("admin", new OpenApiInfo {Title = "Admin API", Version = "admin"});
+                c.CustomSchemaIds(GetSwaggerSchemaId);
             }
         );
+    }
+    
+    private static string GetSwaggerSchemaId(Type type)
+    {
+        var fullName = type.FullName;
+
+        if (fullName == null || fullName.StartsWith(Prefix) == false)
+        {
+            throw new Exception(
+                $"Type for Swagger schema MUST be in namespace {Prefix.Substring(0, Prefix.Length - 2)}. Type {fullName}"
+            );
+        }
+
+        return fullName.Substring(Prefix.Length).Replace('+', '.');
     }
 
     public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
