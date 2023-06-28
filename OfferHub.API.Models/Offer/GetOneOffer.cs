@@ -4,7 +4,6 @@ namespace OfferHub.API.Models.Offer;
 
 public class GetOneOffer
 {
-    [Required]
     public int Id { get; set; }
     
     public class Response
