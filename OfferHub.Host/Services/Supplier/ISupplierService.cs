@@ -4,5 +4,6 @@ namespace OfferHub.Host.Services.Supplier;
 
 public interface ISupplierService
 {
-    public Task<List<SupplierModel>> GetPopularitySupplier(int skip, int take);
+    public Task<SupplierModel> Create(string name);
+    public Task<List<SupplierModel>> SupplierList(int skip, int take);
 }

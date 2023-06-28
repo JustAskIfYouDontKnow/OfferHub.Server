@@ -4,7 +4,8 @@ namespace OfferHub.Host.Services.Offer;
 
 public interface IOfferService
 {
-    public Task<OfferModel> GetOneByBrand(string brandName);
-    public Task<OfferModel> GetOneByModel(string modelName);
-    public Task<OfferModel> GetOneBySupplier(int supplierId);
+    public Task<OfferModel> Create(string brand, string model, int supplierId);
+    public Task<OfferModel> GetOneById(int id);
+    public Task<List<OfferModel>> OfferList();
+    public Task<List<OfferModel>> SearchOffers(string searchTerm);
 }

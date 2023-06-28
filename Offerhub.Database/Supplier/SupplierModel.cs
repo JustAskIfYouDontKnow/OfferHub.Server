@@ -15,13 +15,12 @@ public class SupplierModel : AbstractModel
     
     
     
-    public static SupplierModel Create(string name, DateTime creationDate, List<OfferModel> offers)
+    public static SupplierModel Create(string name, DateTime creationDate)
     {
         return new SupplierModel()
         {
             Name = name,
             CreationDate = DateTime.Now,
-            Offers = offers,
         };
     }
 }

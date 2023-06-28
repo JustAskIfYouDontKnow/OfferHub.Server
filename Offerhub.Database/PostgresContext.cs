@@ -20,7 +20,18 @@ namespace Offerhub.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
+            modelBuilder.Entity<OfferModel>()
+                .Property(o => o.Id)
+                .UseIdentityAlwaysColumn();
+
+            modelBuilder.Entity<SupplierModel>()
+                .Property(s => s.Id)
+                .UseIdentityAlwaysColumn();
+            
+            modelBuilder.Entity<OfferModel>()
+                .HasOne(o => o.Supplier)
+                .WithMany(s => s.Offers)
+                .HasForeignKey(o => o.SupplierId);
         }
     }
 }
