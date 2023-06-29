@@ -14,10 +14,12 @@ public class SupplierController : AbstractClientController
     {
         var supplier = await ServiceFactory.SupplierService.Create(supplierRequest.Name);
 
-        return Ok(new CreateSupplier.Response(
-                supplier.Id,
-                supplier.Name,
-                supplier.CreationDate));
+        var response = new CreateSupplier.Response(
+            supplier.Id,
+            supplier.Name,
+            supplier.CreationDate);
+        
+        return Ok(response);
     }
     
     

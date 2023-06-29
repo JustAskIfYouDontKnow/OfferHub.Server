@@ -14,13 +14,15 @@ public class OfferController : AbstractClientController
     {
         var offer = await ServiceFactory.OfferService.GetOneById(offerRequest.Id);
 
-        return Ok(new GetOneOffer.Response(
-                offer.Id,
-                offer.Brand,
-                offer.Model,
-                offer.RegistrationDate,
-                offer.SupplierId,
-                offer.Supplier.Name));
+        var response = new GetOneOffer.Response(
+            offer.Id,
+            offer.Brand,
+            offer.Model,
+            offer.RegistrationDate,
+            offer.SupplierId,
+            offer.Supplier.Name);
+        
+        return Ok(response);
     }
     
     
@@ -30,13 +32,14 @@ public class OfferController : AbstractClientController
     {
         var offer = await ServiceFactory.OfferService.Create(offerRequest.Brand, offerRequest.Model, offerRequest.SupplierId);
 
-        return Ok(
-            new CreateOffer.Response(
-                offer.Id,
-                offer.Brand,
-                offer.Model,
-                offer.RegistrationDate,
-                offer.SupplierId));
+        var response = new CreateOffer.Response(
+            offer.Id,
+            offer.Brand,
+            offer.Model,
+            offer.RegistrationDate,
+            offer.SupplierId);
+        
+        return Ok(response);
     }
 
 
