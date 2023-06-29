@@ -15,8 +15,11 @@ public class OfferService : IOfferService
 
     public async Task<OfferModel> Create(string brand, string model, int supplierId)
     {
+        var brandToLower = brand.ToLower();
+        var modelToLower = model.ToLower();
+        
         var supplierModel = await _databaseContainer.Supplier.GetOneById(supplierId);
-        var offerModel =  OfferModel.Create(brand, model, supplierModel.Id);
+        var offerModel = OfferModel.Create(brandToLower, modelToLower, supplierModel.Id);
         return await _databaseContainer.Offer.CreateOffer(offerModel);
     }
 

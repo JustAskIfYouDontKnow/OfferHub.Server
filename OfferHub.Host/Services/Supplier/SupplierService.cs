@@ -13,10 +13,11 @@ public class SupplierService : ISupplierService
     }
 
     public async Task<SupplierModel> Create(string name)
-    {
-       var supplierModel = SupplierModel.Create(name, DateTime.Now);
-       
-       return await _databaseContainer.Supplier.CreateSupplier(supplierModel);
+    { 
+        var nameToLower = name.ToLower(); 
+        var supplierModel = SupplierModel.Create(nameToLower, DateTime.Now);
+        
+        return await _databaseContainer.Supplier.CreateSupplier(supplierModel);
     }
 
     public async Task<List<SupplierModel>> SupplierList(int skip, int take)
