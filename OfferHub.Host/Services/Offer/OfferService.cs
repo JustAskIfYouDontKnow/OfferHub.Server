@@ -41,7 +41,4 @@ public class OfferService : IOfferService
         var searchTermToLower = searchTerm.ToLower();
         return await _databaseContainer.Offer.SearchOffers(searchTermToLower);
     }
-
-
-
 }
