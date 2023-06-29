@@ -1,6 +1,6 @@
 ﻿namespace OfferHub.API.Models.Supplier;
 
-public class SupplierList
+public class PopularSupplierList
 {
     public class Response
     {
@@ -8,26 +8,20 @@ public class SupplierList
         {
             Suppliers = suppliers;
         }
-        
+            
         public List<ResponseItem> Suppliers { get; set; }
     }
-    
+        
     public class ResponseItem
     {
-        public ResponseItem(int id, string name, DateTime creationDate, List<int> offerIds)
+        public ResponseItem(string name, int offerCount)
         {
-            Id = id;
             Name = name;
-            CreationDate = creationDate;
-            OfferIds = offerIds;
+            OfferCount = offerCount;
         }
-        
-        public int Id { get; set; }
-
+            
         public string Name { get; set; }
-
-        public DateTime CreationDate { get; set; }
-
-        public List<int> OfferIds { get; set; }
+            
+        public int OfferCount { get; set; }
     }
 }

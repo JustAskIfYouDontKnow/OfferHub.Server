@@ -10,9 +10,9 @@ public class SupplierController : AbstractClientController
     
     [HttpPost]
     [ProducesResponseType(typeof(CreateSupplier.Response), 200)]
-    public async Task<IActionResult> CreateSupplier([FromBody] CreateSupplier supplierRequest)
+    public async Task<IActionResult> CreateSupplier([FromBody] CreateSupplier request)
     {
-        var supplier = await ServiceFactory.SupplierService.Create(supplierRequest.Name);
+        var supplier = await ServiceFactory.SupplierService.Create(request.Name);
 
         var response = new CreateSupplier.Response(
             supplier.Id,
@@ -24,19 +24,21 @@ public class SupplierController : AbstractClientController
     
     
     [HttpGet]
-    [ProducesResponseType(typeof(PopularitySupplierList.Response), 200)]
-    public async Task<IActionResult> GetPopularitySupplier()
+    [ProducesResponseType(typeof(PopularSupplierList.Response), 200)]
+    public async Task<IActionResult> GetPopularSupplier()
     {
         const int maxTakeSupplier = 3;
         var supplierList = await ServiceFactory.SupplierService.SupplierList(0, maxTakeSupplier);
 
-        var response = supplierList
-            .Select(s => new PopularitySupplierList.Response(
-                    s.Name,
-                    s.Offers.Count))
+        var responseItems = supplierList
+            .Select(s => new PopularSupplierList.ResponseItem(
+                s.Name,
+                s.Offers.Count))
             .OrderByDescending(supplier => supplier.OfferCount)
             .ToList();
         
+        var response = new PopularSupplierList.Response(responseItems);
+    
         return Ok(response);
     }
     
@@ -46,13 +48,15 @@ public class SupplierController : AbstractClientController
     {
         var supplierList = await ServiceFactory.SupplierService.SupplierList(skip, take);
 
-        var response = supplierList
-            .Select(s => new SupplierList.Response(
+        var responseItems = supplierList
+            .Select(s => new SupplierList.ResponseItem(
                     s.Id,
                     s.Name,
                     s.CreationDate,
                     s.Offers.Select(o => o.Id).ToList()))
             .ToList();
+        
+        var response = new SupplierList.Response(responseItems);
         
         return Ok(response);
     }

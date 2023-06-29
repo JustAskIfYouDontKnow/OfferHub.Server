@@ -8,7 +8,6 @@ namespace Offerhub.Database
     {
         public IOfferRepository Offer { get; }
         public ISupplierRepository Supplier { get; }
-
         public DatabaseContainer(PostgresContext db, ILoggerFactory loggerFactory)
         {
             Supplier = new SupplierRepository(db, loggerFactory);

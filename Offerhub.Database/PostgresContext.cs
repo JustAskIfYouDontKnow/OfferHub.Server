@@ -5,7 +5,7 @@ using Offerhub.Database.Supplier;
 
 namespace Offerhub.Database
 {
-    public class PostgresContext : DbContext
+    public sealed class PostgresContext : DbContext
     {
         public readonly DatabaseContainer Db;
         

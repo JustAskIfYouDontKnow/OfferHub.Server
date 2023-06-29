@@ -4,7 +4,16 @@ public class OfferList
 {
     public class Response
     {
-        public Response(int id, string brand, string model, string supplierName, DateTime registrationDate)
+        public Response(List<ResponseItem> offers)
+        {
+            Offers = offers;
+        }
+        public List<ResponseItem> Offers { get; set; }
+    }
+    
+    public class ResponseItem
+    {
+        public ResponseItem(int id, string brand, string model, string supplierName, DateTime registrationDate)
         {
             Id = id;
             Brand = brand;
@@ -22,5 +31,6 @@ public class OfferList
         public string SupplierName { get; set; }
 
         public DateTime RegistrationDate { get; set; }
+        
     }
 }
