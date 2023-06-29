@@ -2,7 +2,7 @@
 
 using Microsoft.OpenApi.Models;
 
-static internal class SwaggerStartup
+internal static class SwaggerStartup
 {
     private const string Prefix = "OfferHub.";
     public static void ConfigureServices(IServiceCollection services)
@@ -45,7 +45,6 @@ static internal class SwaggerStartup
             {
                 c.RoutePrefix = "docs";
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Main API V1");
-                c.SwaggerEndpoint("/swagger/admin/swagger.json", "Admin Api");
             }
         );
     }
